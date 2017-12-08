@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .model import Ink
 
-# Register your models here.
+admin.site.register(Ink)
+
