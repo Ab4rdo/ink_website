@@ -20,15 +20,17 @@ def email(request):
     else:
         form = ContactForm(request.POST)
         if form.is_valid():
-            form_subject = form.cleaned_data['subject']
+            form_name_surname = form.cleaned_data['name_surname']
             form_email = form.cleaned_data['email']
+            form_subject = form.cleaned_data['subject']
             form_message = form.cleaned_data['message']
             sender_email = settings.EMAIL_HOST_USER
             receiver_email = settings.EMAIL_HOST_USER
-            contact_message = "%s: %s via %s"%(
+            contact_message = "From: %s %s\nSubject: %s\nMessage:\n%s"%(
+                    form_name_surname,
+                    form_email,
                     form_subject,
                     form_message,
-                    form_email,
             )
             try:
                 send_mail(form_subject, contact_message, sender_email, [receiver_email], fail_silently=False)
