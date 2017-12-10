@@ -1,5 +1,7 @@
 from django.urls import include, path
 
+from ink_website import settings
+
 from . import views
 
 app_name = 'kwzink'
