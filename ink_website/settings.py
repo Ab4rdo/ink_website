@@ -15,9 +15,8 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
+# MAIL
+EMAIL_HOST = 'fryderyk97@gmail.com'
 
 # SECURITY WARNING
 SECRET_KEY = 'j$x4fv_^j5t043-u6!s40shj4x1kds05avhr&r+89-f(6lwjq1'

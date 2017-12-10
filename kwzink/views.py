@@ -8,7 +8,7 @@ def index(request):
     return render(request, 'kwzink/index.html')
 
 def contact(request):
-    return render(request, 'kwzink/contact.html')
+    return email(request)
 
 def about(request):
     return render(request, 'kwzink/about.html')
@@ -19,9 +19,9 @@ def email(request):
     else:
         form = ContactForm(request.POST)
         if form.is_valid():
-            subject = form.cleande_data['subject']
-            from_email = form.cleande_data['form_email']
-            message = form.cleande_data['message']
+            subject = form.cleaned_data['subject']
+            from_email = form.cleaned_data['from_email']
+            message = form.cleaned_data['message']
             try:
                 send_mail(subject, message, from_email, ['fryderyk97@gmail.com'])
             except BadHeaderError:
