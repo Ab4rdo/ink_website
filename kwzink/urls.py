@@ -6,7 +6,7 @@ app_name = 'kwzink'
 
 urlpatterns = [
     path('', views.index, name='home'), # home dir
-    path('contact/', views.contact, name='contact'), 
+    path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
 #   path('form', views.form),
 #   path('inks', views.inks),
