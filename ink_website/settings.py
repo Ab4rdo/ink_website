@@ -25,7 +25,6 @@ EMAIL_PORT = 587
 
 
 # SECURITY WARNING
-SECRET_KEY = 'j$x4fv_^j5t043-u6!s40shj4x1kds05avhr&r+89-f(6lwjq1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
