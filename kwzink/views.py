@@ -26,10 +26,9 @@ def email(request):
             form_message = form.cleaned_data['message']
             sender_email = settings.EMAIL_HOST_USER
             receiver_email = settings.EMAIL_HOST_USER
-            contact_message = "From: %s %s\nSubject: %s\nMessage:\n%s"%(
+            contact_message = "From: %s %s\nMessage:\n%s"%(
                     form_name_surname,
                     form_email,
-                    form_subject,
                     form_message,
             )
             try:
