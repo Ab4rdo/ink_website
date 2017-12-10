@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 
+from ink_website import settings
 from .forms import ContactForm
 
 def index(request):
@@ -19,11 +20,18 @@ def email(request):
     else:
         form = ContactForm(request.POST)
         if form.is_valid():
-            subject = form.cleaned_data['subject']
-            from_email = form.cleaned_data['from_email']
-            message = form.cleaned_data['message']
+            form_subject = form.cleaned_data['subject']
+            form_email = form.cleaned_data['email']
+            form_message = form.cleaned_data['message']
+            sender_email = settings.EMAIL_HOST_USER
+            receiver_email = settings.EMAIL_HOST_USER
+            contact_message = "%s: %s via %s"%(
+                    form_subject,
+                    form_message,
+                    form_email,
+            )
             try:
-                send_mail(subject, message, from_email, ['fryderyk97@gmail.com'])
+                send_mail(form_subject, contact_message, sender_email, [receiver_email], fail_silently=False)
             except BadHeaderError:
                 return HttpResponse('bad header found.')
     return render(request, 'kwzink/contact.html', {'form':form})

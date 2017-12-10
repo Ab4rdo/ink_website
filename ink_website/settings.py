@@ -16,7 +16,13 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # MAIL
-EMAIL_HOST = 'fryderyk97@gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'fryderyk97@gmail.com'
+EMAIL_HOST_PASSWORD = 'tnzr ihby gkpe fsek'
+EMAIL_PORT = 587
+
 
 # SECURITY WARNING
 SECRET_KEY = 'j$x4fv_^j5t043-u6!s40shj4x1kds05avhr&r+89-f(6lwjq1'
