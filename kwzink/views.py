@@ -14,6 +14,9 @@ def contact(request):
 def about(request):
     return render(request, 'kwzink/about.html')
 
+def inks(request):
+    return render(request, 'kwzink/inks.html')
+
 def email(request):
     if request.method == 'GET':
         form = ContactForm()
@@ -32,8 +35,15 @@ def email(request):
                     form_message,
             )
             try:
-                send_mail(email_subject, contact_message, email, [email], fail_silently=False)
+                send_mail(email_subject,
+                        contact_message,
+                        email,
+                        [email],
+                        fail_silently=False,
+                )
             except BadHeaderError:
                 return HttpResponse('bad header found.')
     return render(request, 'kwzink/contact.html', {'form':form})
+    
 
+    
