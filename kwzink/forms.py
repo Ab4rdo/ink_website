@@ -7,7 +7,7 @@ class ContactForm(forms.Form):
     email = forms.EmailField(required=True)
     subject = forms.CharField(required=True)
     message = forms.CharField(widget=forms.Textarea)
-#   captcha = ReCaptchaField(attrs={
-#         'theme' : 'clean',
-#         })
+    captcha = ReCaptchaField(attrs={
+         'theme' : 'light',
+         })
 

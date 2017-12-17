@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.core.mail import send_mail, BadHeaderError
+from django.core.mail import EmailMessage, BadHeaderError
 from django.http import HttpResponse
 
 from ink_website import settings
@@ -35,12 +35,14 @@ def email(request):
                     form_message,
             )
             try:
-                send_mail(email_subject,
+                email_msg = EmailMessage(
+                        email_subject,
                         contact_message,
-                        email,
+                        form_email,
                         [email],
-                        fail_silently=False,
+                        reply_to=[form_email],
                 )
+                email_msg.send()
             except BadHeaderError:
                 return HttpResponse('bad header found.')
     return render(request, 'kwzink/contact.html', {'form':form})
